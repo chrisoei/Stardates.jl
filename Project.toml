@@ -3,6 +3,11 @@ uuid = "509f810d-e932-4a50-86c7-f8dcaa7e0150"
 authors = ["Chris Oei <chris.oei@gmail.com>"]
 version = "0.1.0"
 
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+TimeZones = "f269a46b-ccf7-5d73-abea-4c690281aa53"
+
 [compat]
 julia = "1"
 
