@@ -7,7 +7,7 @@ function SD(zdt::ZonedDateTime)
   y0 = year(tx)
   t0 = Stardates.getstartofyear(y0).zoneddatetime
   t1 = Stardates.getstartofyear(y0 + 1).zoneddatetime
-  SD(y0 + (tx - t0)/(t1 - t0))
+  SD(y0 + (tx - t0) / (t1 - t0))
 end
 
 function SD(dt::Dates.DateTime)
@@ -15,12 +15,11 @@ function SD(dt::Dates.DateTime)
   y0 = Dates.year(dt)
   t0 = Stardates.getstartofyear(y0).unix
   t1 = Stardates.getstartofyear(y0 + 1).unix
-  SD(y0 + (Dates.datetime2unix(dt) - t0)/(t1 - t0))
+  SD(y0 + (Dates.datetime2unix(dt) - t0) / (t1 - t0))
 end
 
 function SD(d::Dates.Date, hr, mi, ss, tz)
-  SD(ZonedDateTime(Dates.year(d), Dates.month(d), Dates.day(d),
-       hr, mi, ss, tz))
+  SD(ZonedDateTime(Dates.year(d), Dates.month(d), Dates.day(d), hr, mi, ss, tz))
 end
 
 "Return the stardate of the closing bell of the date"

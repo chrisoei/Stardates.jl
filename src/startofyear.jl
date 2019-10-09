@@ -4,7 +4,9 @@ function getstartofyear(y)
     return startofyear[y]
   end
   dt = Dates.DateTime(y, 1, 1, 0, 0, 0)
-  startofyear[y] = (datetime=dt,
-                    unix=Dates.datetime2unix(dt),
-                    zoneddatetime=ZonedDateTime(dt, tz"UTC"))
+  startofyear[y] = (
+    datetime = dt,
+    unix = Dates.datetime2unix(dt),
+    zoneddatetime = ZonedDateTime(dt, tz"UTC"),
+  )
 end
