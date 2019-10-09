@@ -8,7 +8,6 @@ module Stardates
   include("startofyear.jl")
   include("sd.jl")
 
-  export millisecond, second, minute, hour, day, week, fortnight, month
   export SD, canonical, short
 
 end # module
