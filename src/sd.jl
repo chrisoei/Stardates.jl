@@ -29,7 +29,7 @@ end
 
 "Return the stardate of the closing bell of the date represented by iso8601"
 function nyse_closing_stardate(iso8601)
-  nyseclosingstardate(parse(Dates.Date, iso8601)).sd
+  nyse_closing_stardate(parse(Dates.Date, iso8601))
 end
 
 function SD(st::Base.StatStruct)
