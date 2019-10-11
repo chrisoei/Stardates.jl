@@ -27,4 +27,10 @@ using TimeZones
     sd3 = SD()
     @test sd1.sd <= sd2.sd
     @test sd2.sd <= sd3.sd
+
+    # Test against Python implementation output
+    @test stardate(
+        ZonedDateTime(2019, 10, 11, 11, 7, 0, tz"America/Los_Angeles")) ≈
+        2019.7774105783867
+
 end

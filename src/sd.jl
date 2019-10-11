@@ -22,9 +22,13 @@ function SD(d::Dates.Date, hr, mi, ss, tz)
   SD(ZonedDateTime(Dates.year(d), Dates.month(d), Dates.day(d), hr, mi, ss, tz))
 end
 
+function stardate(args...)
+  SD(args...).sd
+end
+
 "Return the stardate of the closing bell of the date"
 function nyse_closing_stardate(d::Dates.Date)
-  SD(d, 16, 0, 0, tz"America/New_York").sd
+  stardate(d, 16, 0, 0, tz"America/New_York")
 end
 
 "Return the stardate of the closing bell of the date represented by iso8601"
