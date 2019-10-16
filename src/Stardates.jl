@@ -8,6 +8,6 @@ include("constants.jl")
 include("startofyear.jl")
 include("sd.jl")
 
-export SD, stardate, canonical, short, nyse_closing_stardate
+export Stardate, stardate, canonical, short, nyse_closing_stardate
 
 end # module
