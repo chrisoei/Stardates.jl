@@ -1,7 +1,7 @@
 name = "Stardates"
 uuid = "509f810d-e932-4a50-86c7-f8dcaa7e0150"
 authors = ["Chris Oei <chris.oei@gmail.com>"]
-version = "1.0.2"
+version = "2.0.0-alpha.1"
 
 [deps]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
@@ -10,7 +10,6 @@ TimeZones = "f269a46b-ccf7-5d73-abea-4c690281aa53"
 
 [compat]
 julia = "1"
-TimeZones = "0.7,0.8, 0.9, 0.10"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
