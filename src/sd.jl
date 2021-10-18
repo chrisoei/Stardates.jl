@@ -1,5 +1,15 @@
 struct Stardate
   sd::Float64
+  canonical::String
+  short::String
+end
+
+function Stardate(x::Float64)
+  Stardate(
+    x,
+    Printf.@sprintf("%0.15f", x),
+    Printf.@sprintf("%0.3f", x)
+  )
 end
 
 function Stardate(zdt::ZonedDateTime)
@@ -30,6 +40,29 @@ function Stardate(d::Dates.Date, hr, mi, ss, tz)
   ))
 end
 
+function Stardate()
+  Stardate(now(tz"UTC"))
+end
+
+function Stardate(;
+    year,
+    month,
+    day,
+    hour = 12,
+    minute = 0,
+    second = 0,
+    tz = nothing,
+    style = nothing,
+    copy = false
+)
+  if tz == nothing
+    tz1 = TimeZone(ENV["TZ"])
+  else
+    tz1 = TimeZone(tz)
+  end
+  Stardate(ZonedDateTime(year, month, day, hour, minute, second, tz1))
+end
+
 function stardate(args...)
   Stardate(args...).sd
 end
@@ -48,14 +81,8 @@ function Stardate(st::Base.StatStruct)
   Stardate(Dates.unix2datetime(st.mtime))
 end
 
-function Stardate()
-  Stardate(now(tz"UTC"))
+function mtime(fn::AbstractString)
+  Stardate(stat(fn))
 end
 
-function canonical(sd::Stardate)
-  Printf.@sprintf("%0.15f", sd.sd)
-end
 
-function short(sd::Stardate)
-  Printf.@sprintf("%0.3f", sd.sd)
-end

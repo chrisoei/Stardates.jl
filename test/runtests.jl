@@ -4,8 +4,8 @@ using TimeZones
 
 @testset "Stardates.jl" begin
         @test Stardates.millisecond > 0.0
-        @test length(canonical(Stardate())) == 20
-        @test length(short(Stardate())) == 8
+        @test length(Stardate().canonical) == 20
+        @test length(Stardate().short) == 8
         @test abs(Stardate(ZonedDateTime(
                 2019,
                 8,
@@ -52,5 +52,12 @@ using TimeZones
                 0,
                 tz"America/Los_Angeles",
         )) ≈ 2019.7774105783867
+
+        @test Stardate(
+            year = 2063,
+            month = 4,
+            day = 5,
+            tz = "UTC-6"
+        ).sd ≈ 2063.2595890410958
 
 end
