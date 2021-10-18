@@ -81,7 +81,7 @@ function Stardate(st::Base.StatStruct)
   Stardate(Dates.unix2datetime(st.mtime))
 end
 
-function mtime(fn::AbstractString)
+function mstardate(fn::AbstractString)
   Stardate(stat(fn))
 end
 

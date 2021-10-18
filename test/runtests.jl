@@ -35,7 +35,7 @@ using TimeZones
         sleep(1.0)
         f1 = tempname()
         write(f1, "Hello")
-        sd2 = Stardate(stat(f1))
+        sd2 = mstardate(f1)
         rm(f1)
         sleep(1.0)
         sd3 = Stardate()
