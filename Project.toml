@@ -1,7 +1,7 @@
 name = "Stardates"
 uuid = "509f810d-e932-4a50-86c7-f8dcaa7e0150"
 authors = ["Chris Oei <chris.oei@gmail.com>"]
-version = "2.0.0-alpha.2"
+version = "2.0.0"
 
 [deps]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
