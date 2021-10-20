@@ -2,13 +2,15 @@ struct Stardate
   sd::Float64
   canonical::String
   short::String
+  originaltz::TimeZones.TimeZone
 end
 
-function Stardate(x::Float64)
+function Stardate(x::Float64, tz1::TimeZone = tz"UTC")
   Stardate(
     x,
     Printf.@sprintf("%0.15f", x),
-    Printf.@sprintf("%0.3f", x)
+    Printf.@sprintf("%0.3f", x),
+    tz1
   )
 end
 
@@ -17,7 +19,7 @@ function Stardate(zdt::ZonedDateTime)
   y0 = year(tx)
   t0 = Stardates.getstartofyear(y0).zoneddatetime
   t1 = Stardates.getstartofyear(y0 + 1).zoneddatetime
-  Stardate(y0 + (tx - t0) / (t1 - t0))
+  Stardate(y0 + (tx - t0) / (t1 - t0), timezone(zdt))
 end
 
 function Stardate(dt::Dates.DateTime)
@@ -38,10 +40,6 @@ function Stardate(d::Dates.Date, hr, mi, ss, tz)
     ss,
     tz,
   ))
-end
-
-function Stardate()
-  Stardate(now(tz"UTC"))
 end
 
 function Stardate(;
@@ -85,4 +83,7 @@ function mstardate(fn::AbstractString)
   Stardate(stat(fn))
 end
 
+function Stardate(sy::Symbol)
+  Stardate(now(TimeZone(ENV["TZ"])))
+end
 
