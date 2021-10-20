@@ -1,5 +1,7 @@
 # Stardates
 
+## Setup
+
 ```
 (@v1.6) pkg> add git@192.168.1.86:chrisoei/Stardates.jl.git
      Cloning git-repo `git@192.168.1.86:chrisoei/Stardates.jl.git`
@@ -42,3 +44,37 @@ julia> nyse_closing_stardate("2010-05-06")
 
 ```
 
+## Testing
+
+```
+c@h269x:/mnt/nfs/h157truenas/tmp/git/h286x/chrisoei/Stardates.jl$ julia
+               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.6.3 (2021-09-23)
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+|__/                   |
+
+(@v1.6) pkg> activate .
+  Activating environment at `/mnt/nfs/h157truenas/tmp/git/h286x/chrisoei/Stardates.jl/Project.toml`
+
+(Stardates) pkg> instantiate
+    Updating registry at `~/.julia/registries/General`
+    Updating `/mnt/nfs/h157truenas/tmp/git/h286x/chrisoei/Stardates.jl/Project.toml`
+  [f269a46b] + TimeZones v1.6.1
+    Updating `/mnt/nfs/h157truenas/tmp/git/h286x/chrisoei/Stardates.jl/Manifest.toml`
+  [34da2185] + Compat v3.39.0
+...
+
+(Stardates) pkg> test
+     Testing Stardates
+...
+Precompiling project...
+  1 dependency successfully precompiled in 2 seconds (10 already precompiled)
+     Testing Running tests...
+Test Summary: | Pass  Total
+Stardates.jl  |   12     12
+     Testing Stardates tests passed 
+```
