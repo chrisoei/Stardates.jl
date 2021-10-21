@@ -5,6 +5,17 @@ struct Stardate
   originaltz::TimeZones.TimeZone
 end
 
+"""
+    defaulttimezone()
+
+Returns a TimeZone object corresponding to the
+IPFS file `/t/env/TZ`.
+"""
+function defaulttimezone()
+    tzstring = read(`ipfs files read /t/env/TZ`, String)
+    TimeZones.TimeZone(tzstring)
+end
+
 function Stardate(x::Float64, tz1::TimeZone = tz"UTC")
   Stardate(
     x,
@@ -54,7 +65,7 @@ function Stardate(;
     copy = false
 )
   if tz == nothing
-    tz1 = TimeZone(ENV["TZ"])
+    tz1 = defaulttimezone()
   else
     tz1 = TimeZone(tz)
   end
@@ -83,7 +94,8 @@ function mstardate(fn::AbstractString)
   Stardate(stat(fn))
 end
 
-function Stardate(sy::Symbol)
-  Stardate(now(TimeZone(ENV["TZ"])))
+function Stardate(style::Symbol)
+  @assert(style == :now)
+  Stardate(now(defaulttimezone()))
 end
 
