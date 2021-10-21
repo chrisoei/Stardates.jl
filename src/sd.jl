@@ -99,3 +99,10 @@ function Stardate(style::Symbol)
   Stardate(now(defaulttimezone()))
 end
 
+function mediawiki(x::Stardate)
+    "<stardate digits=\"3\" tz=\"" *
+    TimeZones.name(x.originaltz) * "\">" *
+    x.canonical *
+    "</stardate>"
+end
+

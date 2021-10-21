@@ -8,6 +8,7 @@ include("constants.jl")
 include("startofyear.jl")
 include("sd.jl")
 
-export Stardate, stardate, defaulttimezone, mstardate, nyse_closing_stardate
+export Stardate, stardate, defaulttimezone, mediawiki, mstardate,
+    nyse_closing_stardate
 
 end # module
