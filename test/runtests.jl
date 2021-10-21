@@ -4,8 +4,8 @@ using TimeZones
 
 @testset "Stardates.jl" begin
         @test Stardates.millisecond > 0.0
-        @test length(Stardate().canonical) == 20
-        @test length(Stardate().short) == 8
+        @test length(Stardate(:now).canonical) == 20
+        @test length(Stardate(:now).short) == 8
         @test abs(Stardate(ZonedDateTime(
                 2019,
                 8,
@@ -31,14 +31,14 @@ using TimeZones
         @test abs(Stardate(DateTime(2012, 1, 2, 3, 4, 5)).sd -
                   2012.0030815181644) < 3.0 * Stardates.second
 
-        sd1 = Stardate()
+        sd1 = Stardate(:now)
         sleep(1.0)
         f1 = tempname()
         write(f1, "Hello")
         sd2 = mstardate(f1)
         rm(f1)
         sleep(1.0)
-        sd3 = Stardate()
+        sd3 = Stardate(:now)
         @test sd1.sd <= sd2.sd
         @test sd2.sd <= sd3.sd
 
